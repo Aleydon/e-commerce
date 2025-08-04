@@ -7,13 +7,11 @@
   <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
   <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
-  <img alt="Prisma" src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" />
   <img alt="Jest" src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" />
 </p>
 
 <p align="center">
   <br>
-  <img width="900" src="./assets/next14.png" alt="logo of Next14 repository">
   <img width="900" src="./assets/next14.png" alt="logo of Next15 repository">
   <br>
   <br>
@@ -30,7 +28,7 @@ This is a robust template for **Next.js 15** projects, pre-configured with a mod
 - **Framework:** [Next.js 15](https://nextjs.org/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Database:** [PostgreSQL](https://www.postgresql.org/) with [Prisma ORM](https://www.prisma.io/)
+- **Database:** [PostgreSQL](https://www.postgresql.org/) with [Drizzle Orm](https://orm.drizzle.team/)
 - **Containerization:** [Docker](https://www.docker.com/)
 - **Testing:** [Jest](https://jestjs.io/) & [Testing Library](https://testing-library.com/)
 - **Component Documentation:** [Storybook](https://storybook.js.org/)
@@ -43,9 +41,8 @@ This is a robust template for **Next.js 15** projects, pre-configured with a mod
 
 This project has multiple branches to showcase different database configurations:
 
-- **`master`**: The main branch, configured with **Prisma ORM**.
-- **`Aleydon`**: A development branch, also configured with **Prisma ORM**.
-- **`Drizzle`**: This branch is configured with **Drizzle ORM**.
+- **`master`**: The main branch, configured with **Drizzle ORM**.
+- **`Aleydon`**: This branch is configured with **Drizzle ORM**.
 
 ---
 
@@ -88,10 +85,10 @@ This project has multiple branches to showcase different database configurations
    ```
 
 6. **Run the database migrations:**
-   - This command will create the database tables based on your Prisma schema.
+   - This command will create the database tables based on your Drizzle schema.
 
    ```sh
-   npm run prisma:migrate
+   npm run drizzle:migrate
    ```
 
 7. **Start the development server:**
@@ -103,21 +100,21 @@ This project has multiple branches to showcase different database configurations
 
 ## 📜 Available Scripts
 
-| Script            | Description                                                     |
-| ----------------- | --------------------------------------------------------------- |
-| `dev`             | Starts the Next.js development server.                          |
-| `build`           | Builds the application for production.                          |
-| `start`           | Starts a production server.                                     |
-| `lint`            | Runs ESLint to analyze and fix the code.                        |
-| `docker:start`    | Starts the services defined in `docker-compose.yml`.            |
-| `prisma:migrate`  | Runs Prisma migrations to update the database.                  |
-| `prisma:generate` | Generates the Prisma Client based on your schema.               |
-| `prisma:studio`   | Opens Prisma Studio to view and edit your data.                 |
-| `test`            | Runs the unit and integration tests.                            |
-| `test:watch`      | Runs the tests in watch mode.                                   |
-| `commit`          | Starts the Commitizen assistant to create standardized commits. |
-| `storybook`       | Starts Storybook to view and develop components.                |
-| `build-storybook` | Builds Storybook for production.                                |
+| Script             | Description                                                     |
+| ------------------ | --------------------------------------------------------------- |
+| `dev`              | Starts the Next.js development server.                          |
+| `build`            | Builds the application for production.                          |
+| `start`            | Starts a production server.                                     |
+| `lint`             | Runs ESLint to analyze and fix the code.                        |
+| `docker:start`     | Starts the services defined in `docker-compose.yml`.            |
+| `drizzle:migrate`  | Runs Drizzle migrations to update the database.                 |
+| `drizzle:generate` | Generates the Drizzle based on your schema.                     |
+| `drizzle:studio`   | Opens Drizzle Studio to view and edit your data.                |
+| `test`             | Runs the unit and integration tests.                            |
+| `test:watch`       | Runs the tests in watch mode.                                   |
+| `commit`           | Starts the Commitizen assistant to create standardized commits. |
+| `storybook`        | Starts Storybook to view and develop components.                |
+| `build-storybook`  | Builds Storybook for production.                                |
 
 ---
 
@@ -133,29 +130,29 @@ The development environment uses Docker to manage the PostgreSQL database.
 
 ---
 
-## 💿 Prisma
+## 💿 Drizzle
 
-Prisma is used as an ORM to interact with the database.
+Drizzle is used as an ORM to interact with the database.
 
 - **Apply migrations:**
 
   ```sh
-  npm run prisma:migrate
+  npm run drizzle:migrate
   ```
 
-  Creates and applies migrations to the database based on `schema.prisma`.
+  Creates and applies migrations to the database based on `src/da/schema.ts`.
 
-- **Generate Prisma Client:**
+- **Generate Drizzle:**
 
   ```sh
-  npm run prisma:generate
+  npm run drizzle:generate
   ```
 
-  Generates or updates the Prisma Client whenever `schema.prisma` is modified.
+  Generates or updates the Prisma Client whenever `src/db/schema.ts` is modified.
 
-- **Open Prisma Studio:**
+- **Open Drizzle Studio:**
   ```sh
-  npm run prisma:studio
+  npm run drizzle:studio
   ```
   Opens a visual interface in the browser to view and manage the database data.
 
