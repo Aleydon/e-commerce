@@ -15,8 +15,13 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Next 15',
-  description: 'Next 15 Template'
+  title: 'E-Commerce',
+  description: 'E-Commerce Application',
+  openGraph: {
+    title: 'E-Commerce',
+    description: 'E-Commerce Application',
+    url: 'https://ecommerce.example.com'
+  }
 };
 
 export default function RootLayout({

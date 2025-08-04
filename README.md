@@ -1,4 +1,4 @@
-<h1 align="center">🚀 Next.js 15 Template 🚀</h1>
+<h1 align="center">🚀 E-commerce 🚀</h1>
 
 <p align="center">
   <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
@@ -6,20 +6,14 @@
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
   <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img alt="Drizzle" src="https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=000" />
   <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
   <img alt="Jest" src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" />
 </p>
 
-<p align="center">
-  <br>
-  <img width="900" src="./assets/next14.png" alt="logo of Next15 repository">
-  <br>
-  <br>
-</p>
-
 ## 📖 About The Project
 
-This is a robust template for **Next.js 15** projects, pre-configured with a modern development stack to ensure productivity, code quality, and scalability. It includes tools for databases, testing, component documentation, and much more.
+This is an e-commerce project built with **Next.js 15**, featuring a modern and scalable architecture for an online store. The project comes pre-configured with a development toolset that ensures productivity, code quality, and a solid foundation for e-commerce features.
 
 ---
 
@@ -58,13 +52,13 @@ This project has multiple branches to showcase different database configurations
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/Aleydon/Next15.git
+   git clone https://github.com/Aleydon/e-commerce.git
    ```
 
 2. **Navigate to the project directory:**
 
    ```sh
-   cd Next15
+   cd e-commerce
    ```
 
 3. **Install dependencies:**
