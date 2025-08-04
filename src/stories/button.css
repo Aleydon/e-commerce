@@ -1,0 +1,3 @@
+.storybook-button {
+  background-color: var(--button-bg-color, #eee);
+}
