@@ -12,6 +12,8 @@
 # postgres
 .postgres-data
 
+# docker 
+.init.sql
 # testing
 /coverage
 
