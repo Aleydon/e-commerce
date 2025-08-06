@@ -1,7 +1,9 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -22,8 +24,10 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { authClient } from '@/lib/auth-client';
 
 export function SignUpForm() {
+  const router = useRouter();
   const formSchema = z
     .object({
       name: z
@@ -64,9 +68,27 @@ export function SignUpForm() {
       passwordConfirmation: ''
     }
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    console.log('Form submitted successfully');
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    await authClient.signUp.email({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+      fetchOptions: {
+        onSuccess: () => {
+          router.push('/');
+        },
+        onError: error => {
+          if (error) {
+            toast.error('E-mail já cadastrado!');
+            form.setError('email', {
+              type: 'manual',
+              message: 'E-mail já cadastrado!'
+            });
+          }
+          toast.error(error.error.message || 'Erro ao criar conta.');
+        }
+      }
+    });
   }
   return (
     <>
