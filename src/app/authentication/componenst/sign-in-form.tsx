@@ -1,7 +1,9 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -22,8 +24,11 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { authClient } from '@/lib/auth-client';
 
 export function SignInForm() {
+  const router = useRouter();
+
   const formSchema = z.object({
     email: z.email('E-mail inválido.').min(2).max(50),
     password: z
@@ -39,9 +44,29 @@ export function SignInForm() {
       password: ''
     }
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    await authClient.signIn.email({
+      email: values.email,
+      password: values.password,
+      fetchOptions: {
+        onSuccess: () => {
+          router.push('/');
+        },
+        onError: error => {
+          if (error.error.error === 'USER_NOT_FOUND') {
+            toast.error(error.error.error);
+            form.setError('email', {
+              type: 'manual',
+              message: error.error.error
+            });
+          } else {
+            toast.error('Erro ao fazer login. Tente novamente.');
+          }
+        }
+      }
+    });
   }
+
   return (
     <>
       <Card>
