@@ -1,5 +1,6 @@
 services:
   postgres:
+    restart: always
     image: postgres:latest
     container_name: e-commerce-postgres
     environment:
