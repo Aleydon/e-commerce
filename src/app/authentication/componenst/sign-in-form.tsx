@@ -26,6 +26,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { authClient } from '@/lib/auth-client';
 
+import { GoogleImage } from './google-image';
+
 export function SignInForm() {
   const router = useRouter();
 
@@ -67,6 +69,12 @@ export function SignInForm() {
     });
   }
 
+  async function handleSIgnInWithGoogle() {
+    await authClient.signIn.social({
+      provider: 'google'
+    });
+  }
+
   return (
     <>
       <Card>
@@ -90,11 +98,11 @@ export function SignInForm() {
                         {...field}
                       />
                     </FormControl>
-
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="password"
@@ -108,14 +116,26 @@ export function SignInForm() {
                         {...field}
                       />
                     </FormControl>
-
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </CardContent>
-            <CardFooter>
-              <Button type="submit">Entrar</Button>
+            <CardFooter className="flex flex-col gap-2">
+              <Button className="w-full" type="submit">
+                Entrar
+              </Button>
+              <Button
+                className="w-full"
+                onClick={handleSIgnInWithGoogle}
+                type="button"
+                variant="outline"
+              >
+                <GoogleImage />
+                <p className="text-sm font-medium text-gray-600">
+                  Entrar com Google
+                </p>
+              </Button>
             </CardFooter>
           </form>
         </Form>
