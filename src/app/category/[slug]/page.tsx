@@ -27,11 +27,15 @@ export default async function CategoryPage({ params }: CategoryProps) {
   });
 
   return (
-    <div className="bg-yellow-200">
-      <h2>{category.name}</h2>
-      <div className="grid grid-cols-2 gap-2">
+    <div className="space-y-6 px-5">
+      <h2 className="text-xl font-semibold">{category.name}</h2>
+      <div className="grid grid-cols-2 gap-4">
         {products.map(product => (
-          <ProductItem key={product.id} product={product} />
+          <ProductItem
+            key={product.id}
+            product={product}
+            textContainerClassName="w-full"
+          />
         ))}
       </div>
     </div>
