@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <div className="bg-accent mt-4 w-full gap-1 p-8">
+    <div className="bg-accent bottom-0 mt-4 w-full gap-1 p-8">
       <p className="text-xs font-medium">&copy; 2025 Copyright BEWEAR</p>
       <p className="text-muted-foreground text-xs font-medium">
         Todos os direitos reservados
