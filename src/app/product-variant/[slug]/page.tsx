@@ -72,14 +72,12 @@ export default async function ProductVariantPage({
         <QuantitySelector />
       </div>
 
-      <div className="px-5">{/* Quantity */}</div>
-
       <div className="flex flex-col space-y-4 px-5">
         <Button className="w-full rounded-full" size={'lg'} variant={'outline'}>
-          Comprar agora
+          Adicionar ao carrinho
         </Button>
         <Button className="w-full rounded-full" size={'lg'}>
-          Adicionar ao carrinho
+          Comprar agora
         </Button>
       </div>
 
