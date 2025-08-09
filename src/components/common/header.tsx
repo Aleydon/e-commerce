@@ -15,15 +15,19 @@ import {
   SheetTitle,
   SheetTrigger
 } from '../ui/sheet';
+import { Cart } from './cart';
 
 export function Header() {
   const { data: session } = authClient.useSession();
 
   return (
     <header className="flex items-center justify-between p-5">
-      <Image src="/logo.svg" alt="BEWEAR" width={100} height={100} priority />
+      <Link href="/">
+        <Image src="/logo.svg" alt="BEWEAR" width={100} height={100} priority />
+      </Link>
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-3.5">
+        <Cart />
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant="outline">
