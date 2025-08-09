@@ -20,7 +20,10 @@ export function ProductItem({
   const cleanedUrl = rawUrl.replace(/^{"|"}$/g, '').trim();
 
   return (
-    <Link className="flex flex-col gap-4" href="/">
+    <Link
+      className="flex flex-col gap-4"
+      href={`/product-variant/${firstVariant.slug}`}
+    >
       <Image
         className="rounded-[1.5rem]"
         src={cleanedUrl}
