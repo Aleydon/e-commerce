@@ -1,16 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
 import { ShoppingBag } from 'lucide-react';
+import Image from 'next/image';
+
+import { getCart } from '@/actions/get-cart';
 
 import { Button } from '../ui/button';
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger
 } from '../ui/sheet';
 
 export function Cart() {
+  const { data: cart, isPending: isLoading } = useQuery({
+    queryKey: ['cart'],
+    queryFn: () => getCart()
+  });
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -20,12 +28,20 @@ export function Cart() {
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </SheetDescription>
+          <SheetTitle>Carrinho</SheetTitle>
         </SheetHeader>
+        <div>
+          {isLoading && 'Carregando...'}
+          {cart?.items.map(item => (
+            <Image
+              key={item?.id}
+              src={item?.productVariant?.imageUrl.slice(2, -2)}
+              alt={item?.productVariant?.name}
+              width={100}
+              height={100}
+            />
+          ))}
+        </div>
       </SheetContent>
     </Sheet>
   );

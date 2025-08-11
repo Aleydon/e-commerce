@@ -6,6 +6,7 @@ import localFont from 'next/font/local';
 import { Footer } from '@/components/common/footer';
 import { Header } from '@/components/common/header';
 import { Toaster } from '@/components/ui/sonner';
+import { ReactQueryProvider } from '@/providers/react-query';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -38,14 +39,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex h-screen flex-col justify-between antialiased`}
       >
-        <div>
-          <Header />
-          {children}
-          <Toaster />
-        </div>
-        <div>
-          <Footer />
-        </div>
+        <ReactQueryProvider>
+          <div>
+            <Header />
+            {children}
+            <Toaster />
+          </div>
+          <div>
+            <Footer />
+          </div>
+        </ReactQueryProvider>
       </body>
     </html>
   );
