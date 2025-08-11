@@ -3,6 +3,7 @@ import { Minus, Plus, Trash } from 'lucide-react';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
+import { addProductsToCart } from '@/actions/add-cart-product';
 import { decreaseProductFromCart } from '@/actions/decrease-cart-product';
 import { removeProductFromCart } from '@/actions/remove-cart-product';
 import { formatCentsToBRL } from '@/helpers/money';
@@ -12,6 +13,7 @@ import { Button } from '../ui/button';
 interface CartItemProps {
   id: string;
   productName: string;
+  productVariantId: string;
   productVariantName: string;
   productVariantImageUrl: string;
   productVariantPriceInCents: number;
@@ -21,6 +23,7 @@ interface CartItemProps {
 export function CartItem({
   id,
   productName,
+  productVariantId,
   productVariantName,
   productVariantImageUrl,
   productVariantPriceInCents,
@@ -44,8 +47,31 @@ export function CartItem({
     }
   });
 
+  const increaseCartProductQuantityMutation = useMutation({
+    mutationKey: ['increase-cart-product-quantity'],
+    mutationFn: () =>
+      addProductsToCart({
+        productVariantId,
+        quantity: 1
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['cart'] });
+    }
+  });
+
   function handleDecrease() {
     decreaseCartProductQuantityMutation.mutate(undefined, {
+      onSuccess: () => {
+        toast.success('Quantidade atualizada.');
+      },
+      onError: () => {
+        toast.error('Erro ao atualizar quantidade.');
+      }
+    });
+  }
+
+  function handleIncrease() {
+    increaseCartProductQuantityMutation.mutate(undefined, {
       onSuccess: () => {
         toast.success('Quantidade atualizada.');
       },
@@ -92,7 +118,11 @@ export function CartItem({
               <Minus />
             </Button>
             <p className="text-xs font-medium">{quantity}</p>
-            <Button className="h-4 w-4" variant={'ghost'} onClick={() => {}}>
+            <Button
+              className="h-4 w-4"
+              variant={'ghost'}
+              onClick={handleIncrease}
+            >
               <Plus />
             </Button>
           </div>
