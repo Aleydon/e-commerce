@@ -8,14 +8,14 @@ import { cartItemTable } from '@/db/schema';
 import { auth } from '@/lib/auth';
 
 import {
-  RemoveProductFromCartSchema,
-  removeProductFromCartSchema
+  DecreaseProductFromCartSchema,
+  decreaseProductFromCartSchema
 } from './schema';
 
-export const removeProductFromCart = async (
-  data: RemoveProductFromCartSchema
+export const decreaseProductFromCart = async (
+  data: DecreaseProductFromCartSchema
 ) => {
-  removeProductFromCartSchema.parse(data);
+  decreaseProductFromCartSchema.parse(data);
 
   const session = await auth.api.getSession({
     headers: await headers()
@@ -26,7 +26,7 @@ export const removeProductFromCart = async (
   }
 
   const cartItem = await db.query.cartItemTable.findFirst({
-    where: (cartItem, { eq }) => eq(cartItem.id, data.cartItemId),
+    where: eq(cartItemTable.id, data.cartItemId),
     with: {
       cart: true
     }
@@ -42,5 +42,15 @@ export const removeProductFromCart = async (
     throw new Error('Não autorizado');
   }
 
-  await db.delete(cartItemTable).where(eq(cartItemTable.id, cartItem.id));
+  if (cartItem.quantity === 1) {
+    await db.delete(cartItemTable).where(eq(cartItemTable.id, cartItem.id));
+    return;
+  }
+
+  await db
+    .update(cartItemTable)
+    .set({
+      quantity: cartItem.quantity - 1
+    })
+    .where(eq(cartItemTable.id, cartItem.id));
 };
