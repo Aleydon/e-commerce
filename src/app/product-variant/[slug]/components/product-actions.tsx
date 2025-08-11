@@ -44,7 +44,10 @@ export function ProductActions({ productVariant }: ProductActionsProps) {
       </div>
 
       <div className="flex flex-col space-y-4 px-5">
-        <AddToCartButton productVariantId={productVariant.id} quantity={1} />
+        <AddToCartButton
+          productVariantId={productVariant.id}
+          quantity={quantity}
+        />
         <Button className="w-full rounded-full" size={'lg'}>
           Comprar agora
         </Button>
