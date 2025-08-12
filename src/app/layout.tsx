@@ -20,12 +20,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'E-Commerce',
-  description: 'E-Commerce Application',
+  title: 'Bewear',
+  description: 'Bewear E-Commerce Application',
   openGraph: {
-    title: 'E-Commerce',
-    description: 'E-Commerce Application',
-    url: 'https://ecommerce.example.com'
+    title: 'Bewear',
+    description: 'Bewear E-Commerce Application'
   }
 };
 
