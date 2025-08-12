@@ -1,188 +1,169 @@
-<h1 align="center">🚀 E-commerce 🚀</h1>
+# <p align="center">Bewear</p>
 
-<p align="center">
-  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
-  <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
-  <img alt="Drizzle" src="https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=000" />
-  <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
-  <img alt="Jest" src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" />
-</p>
+This is a modern e-commerce application built with Next.js, offering a robust and scalable platform for selling clothes, sneakers, and more.
 
-## 📖 About The Project
+## ✨ Features
 
-This is an e-commerce project built with **Next.js 15**, featuring a modern and scalable architecture for an online store. The project comes pre-configured with a development toolset that ensures productivity, code quality, and a solid foundation for e-commerce features.
+- **Product Catalog:** Browse and search for products by category.
+- **Product Variants:** Select different product variations (e.g., size, color).
+- **Shopping Cart:** Add, remove, and update products in the cart.
+- **Authentication:** User sign-up and sign-in with Google.
+- **Responsive Design:** Fully responsive layout for a seamless experience on any device.
 
----
+## 🚀 Technologies
 
-## ✨ Key Features
+This project is built with a modern tech stack, including:
 
-- **Framework:** [Next.js 15](https://nextjs.org/)
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Framework:** [Next.js](https://nextjs.org/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Database:** [PostgreSQL](https://www.postgresql.org/) with [Drizzle Orm](https://orm.drizzle.team/)
+- **UI Components:** [Radix UI](https://www.radix-ui.com/), [shadcn/ui](https://ui.shadcn.com/), and [Lucide Icons](https://lucide.dev/)
+- **State Management:** [TanStack Query](https://tanstack.com/query/latest)
+- **Database ORM:** [Drizzle ORM](https://orm.drizzle.team/)
+- **Database:** [PostgreSQL](https://www.postgresql.org/)
+- **Authentication:** [Better Auth](https://better-auth.dev/)
+- **Form Management:** [React Hook Form](https://react-hook-form.com/) and [Zod](https://zod.dev/)
+- **Component Development:** [Storybook](https://storybook.js.org/)
+- **Testing:** [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/)
+- **Linting & Formatting:** [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
+- **Git Hooks:** [Husky](https://typicode.github.io/husky/)
 - **Containerization:** [Docker](https://www.docker.com/)
-- **Testing:** [Jest](https://jestjs.io/) & [Testing Library](https://testing-library.com/)
-- **Component Documentation:** [Storybook](https://storybook.js.org/)
-- **Code Quality:** [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
-- **Standardized Commits:** [Commitizen](https://commitizen-tools.github.io/commitizen/), [Commitlint](https://commitlint.js.org/) & [Husky](https://typicode.github.io/husky/)
 
----
+## 📦 Getting Started
 
-## 🌿 Branches
-
-This project has multiple branches to showcase different database configurations:
-
-- **`master`**: The main branch, configured with **Drizzle ORM**.
-- **`Aleydon`**: This branch is configured with **Drizzle ORM**.
-
----
-
-## 🚀 Getting Started
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/) (version 18 or higher)
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
 - [Docker](https://www.docker.com/get-started)
 
-### Steps
+### Installation
 
-1. **Clone the repository:**
+1.  **Clone the repository:**
 
-   ```sh
-   git clone https://github.com/Aleydon/e-commerce.git
-   ```
+    ```bash
+    git clone https://github.com/your-username/e-commerce.git
+    cd e-commerce
+    ```
 
-2. **Navigate to the project directory:**
+2.  **Install dependencies:**
 
-   ```sh
-   cd e-commerce
-   ```
+    ```bash
+    yarn install
+    # or
+    npm install
+    ```
 
-3. **Install dependencies:**
+3.  **Set up environment variables:**
 
-   ```sh
-   npm install
-   ```
+    Create a `.env` file in the root of the project and add the following variables:
 
-4. **Set up environment variables:**
-   - Rename the `enviroment-example.env` file to `.env`.
-   - Fill in the required environment variables in the `.env` file.
+    ```env
+    DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
+    # Add other environment variables from enviroment-example.env
+    ```
 
-5. **Start the Docker environment:**
-   - This command will build and start the PostgreSQL container.
+    You can use the `enviroment-example.env` file as a template.
 
-   ```sh
-   npm run docker:start
-   ```
+4.  **Start the database:**
 
-6. **Run the database migrations:**
-   - This command will create the database tables based on your Drizzle schema.
+    This project uses Docker to run a local PostgreSQL database.
 
-   ```sh
-   npm run drizzle:migrate
-   ```
+    ```bash
+    yarn docker:start
+    ```
 
-7. **Start the development server:**
-   ```sh
-   npm run dev
-   ```
+5.  **Run database migrations:**
 
----
+    Apply the database schema to your local database.
+
+    ```bash
+    yarn drizzle
+    ```
+
+6.  **Seed the database:**
+
+    Populate the database with initial data.
+
+    ```bash
+    yarn db:seed
+    ```
+
+### Running the Application
+
+To start the development server, run:
+
+```bash
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## 📜 Available Scripts
 
-| Script             | Description                                                     |
-| ------------------ | --------------------------------------------------------------- |
-| `dev`              | Starts the Next.js development server.                          |
-| `build`            | Builds the application for production.                          |
-| `start`            | Starts a production server.                                     |
-| `lint`             | Runs ESLint to analyze and fix the code.                        |
-| `docker:start`     | Starts the services defined in `docker-compose.yml`.            |
-| `drizzle:migrate`  | Runs Drizzle migrations to update the database.                 |
-| `drizzle:generate` | Generates the Drizzle based on your schema.                     |
-| `drizzle:studio`   | Opens Drizzle Studio to view and edit your data.                |
-| `test`             | Runs the unit and integration tests.                            |
-| `test:watch`       | Runs the tests in watch mode.                                   |
-| `commit`           | Starts the Commitizen assistant to create standardized commits. |
-| `storybook`        | Starts Storybook to view and develop components.                |
-| `build-storybook`  | Builds Storybook for production.                                |
+- `dev`: Starts the development server.
+- `build`: Creates a production build.
+- `start`: Starts the production server.
+- `lint`: Lints the codebase using ESLint.
+- `docker:start`: Starts the Docker container for the database.
+- `docker:stop`: Stops the Docker container for the database.
+- `drizzle`: Pushes the database schema changes.
+- `drizzle:generate`: Generates SQL migration files.
+- `drizzle:studio`: Opens the Drizzle Studio.
+- `drizzle:migrate`: Applies pending migrations.
+- `db:seed`: Seeds the database with initial data.
+- `test`: Runs the test suite.
+- `test:watch`: Runs the test suite in watch mode.
+- `commit`: A utility script to help with conventional commits.
+- `storybook`: Starts the Storybook development server.
+- `build-storybook`: Builds the Storybook for deployment.
 
----
+## 🏗️ Project Structure
 
-## 🐳 Docker
+The project structure is organized as follows:
 
-The development environment uses Docker to manage the PostgreSQL database.
+```
+.
+├── src/
+│   ├── actions/        # Server actions
+│   ├── app/            # Next.js App Router pages and layouts
+│   ├── components/     # Reusable UI components
+│   ├── db/             # Drizzle ORM schema and seed scripts
+│   ├── helpers/        # Helper functions
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Library and utility functions
+│   └── providers/      # React context providers
+├── drizzle/            # Drizzle ORM output
+...
+```
 
-- **Start the container:**
-  ```sh
-  npm run docker:start
-  ```
-  This command will build and start the database container in the background.
+## 🔐 Authentication
 
----
-
-## 💿 Drizzle
-
-Drizzle is used as an ORM to interact with the database.
-
-- **Apply migrations:**
-
-  ```sh
-  npm run drizzle:migrate
-  ```
-
-  Creates and applies migrations to the database based on `src/da/schema.ts`.
-
-- **Generate Drizzle:**
-
-  ```sh
-  npm run drizzle:generate
-  ```
-
-  Generates or updates the Prisma Client whenever `src/db/schema.ts` is modified.
-
-- **Open Drizzle Studio:**
-  ```sh
-  npm run drizzle:studio
-  ```
-  Opens a visual interface in the browser to view and manage the database data.
-
----
+Authentication is handled by [Better Auth](https://better-auth.dev/), which provides a simple and secure way to manage user authentication. The configuration can be found in `src/lib/auth.ts` and the API route in `src/app/api/auth/[...all]/route.ts`.
 
 ## 🧪 Testing
 
-This project uses **Jest** and **Testing Library** for testing.
+This project uses [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/) for testing. Test files are located alongside the files they are testing or in the `.jest` directory.
 
-- To run the tests, execute:
-  ```sh
-  npm run test
-  ```
-- To run the tests in watch mode:
-  ```sh
-  npm run test:watch
-  ```
+To run the tests, use the following command:
 
-A test example can be found in `src/app/page.spec.tsx`.
+```bash
+yarn test
+```
 
----
+## 🤝 Contributing
 
-## 🎨 Storybook
+Contributions are welcome! Please follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for commit messages.
 
-Visualize and develop your components in isolation with **Storybook**.
+To contribute:
 
-- To start Storybook:
-  ```sh
-  npm run storybook
-  ```
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`yarn commit`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-A story example can be found in `src/app/components/Text/text.stories.tsx`.
+## 📄 License
 
-<p align="center">
-  <br>
-  <img width="1100" src="./assets/storybok_screen_shot.png" alt="storybook running">
-  <br>
-  <br>
-</p>
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
