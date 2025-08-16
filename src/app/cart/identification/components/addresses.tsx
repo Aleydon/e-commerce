@@ -26,6 +26,8 @@ import { useCreateShippingAddress } from '@/hooks/mutations/use-create-shipping-
 import { useUpdateCartShippingAddress } from '@/hooks/mutations/use-update-cart-shipping-address';
 import { useUserAddresses } from '@/hooks/queries/use-user-addresses';
 
+import { formatAddress } from '../../helpers/address';
+
 interface AddressesProps {
   shippingAddresses: (typeof shippingAddressTable.$inferSelect)[];
   defaultShippingAddressId: string | null;
@@ -143,7 +145,7 @@ export function Addresses({
                     <div className="flex-1">
                       <Label htmlFor={address.id} className="cursor-pointer">
                         <div>
-                          <p className="text-sm">{address.street}</p>
+                          <p className="text-sm">{formatAddress(address)}</p>
                         </div>
                       </Label>
                     </div>
