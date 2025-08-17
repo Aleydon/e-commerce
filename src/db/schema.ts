@@ -202,11 +202,13 @@ export const productRelations = relations(productTable, ({ one, many }) => ({
 
 export const productVariantRelations = relations(
   productVariantTable,
-  ({ one }) => ({
+  ({ one, many }) => ({
     product: one(productTable, {
       fields: [productVariantTable.productId],
       references: [productTable.id]
-    })
+    }),
+    cartItems: many(cartItemTable),
+    orderItems: many(orderItemTable)
   })
 );
 
@@ -215,7 +217,8 @@ export const userRelations = relations(userTable, ({ many, one }) => ({
   cart: one(cartTable, {
     fields: [userTable.id],
     references: [cartTable.userId]
-  })
+  }),
+  orders: many(orderTable)
 }));
 
 export const shippingAddressRelations = relations(
