@@ -8,6 +8,7 @@ import { PatternFormat } from 'react-number-format';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
+import { getCart } from '@/actions/get-cart';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -30,7 +31,9 @@ import { formatAddress } from '../../helpers/address';
 
 interface AddressesProps {
   shippingAddresses: (typeof shippingAddressTable.$inferSelect)[];
-  defaultShippingAddressId: string | null;
+  defaultShippingAddressId: Awaited<
+    ReturnType<typeof getCart>
+  >['shippingAddressId'];
 }
 
 export function Addresses({

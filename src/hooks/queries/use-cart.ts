@@ -4,9 +4,10 @@ import { getCart } from '@/actions/get-cart';
 
 export const getUseCartQueryKey = () => ['cart'] as const;
 
-export function useCart() {
+export function useCart(initialData?: Awaited<ReturnType<typeof getCart>>) {
   return useQuery({
     queryKey: getUseCartQueryKey(),
-    queryFn: () => getCart()
+    queryFn: () => getCart(),
+    initialData: initialData
   });
 }
