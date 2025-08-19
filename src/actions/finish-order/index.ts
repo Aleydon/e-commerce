@@ -50,9 +50,20 @@ export async function finishOderSchema() {
     const [order] = await tx
       .insert(orderTable)
       .values({
-        ...cart.shippingAddress!,
-        userId: session.user.id!,
-        totalPriceInCents: totalInCents!,
+        email: cart!.shippingAddress!.email,
+        zipCode: cart!.shippingAddress!.zipCode,
+        country: cart!.shippingAddress!.country,
+        phone: cart!.shippingAddress!.phone,
+        cpfOrCnpj: cart!.shippingAddress!.cpfOrCnpj,
+        city: cart!.shippingAddress!.city,
+        complement: cart!.shippingAddress!.complement,
+        neighborhood: cart!.shippingAddress!.neighborhood,
+        number: cart!.shippingAddress!.number,
+        recipientName: cart.shippingAddress!.recipientName,
+        state: cart!.shippingAddress!.state,
+        street: cart!.shippingAddress!.street,
+        userId: session.user.id,
+        totalPriceInCents: totalInCents,
         shippingAddressId: cart.shippingAddress!.id
       })
       .returning();
@@ -70,6 +81,7 @@ export async function finishOderSchema() {
       }));
 
     await tx.insert(orderItemTable).values(orderItemsPayload);
+    await tx.delete(cartTable).where(eq(cartTable.id, cart.id));
     await tx.delete(cartItemTable).where(eq(cartItemTable.cartId, cart.id));
   });
 }
